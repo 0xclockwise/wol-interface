@@ -1,0 +1,25 @@
+{
+  "name": "wol-interface",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "run": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "csv-parser": "^2.3.2",
+    "express": "^4.17.1",
+    "express-handlebars": "^4.0.3",
+    "handlebars": "^4.7.6",
+    "pug": "^2.0.4",
+    "wol": "^1.0.7"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

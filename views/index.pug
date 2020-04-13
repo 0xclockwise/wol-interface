@@ -1,0 +1,15 @@
+html
+    head
+        script(src='static/index.js') 
+    body
+        h1 WoL interface
+
+        if computers == []
+            h1 There are no computers added in the database
+        else
+            table
+                for computer in computers
+                    tr
+                        td= computer.name
+                        td= computer.mac
+                        td: button(onclick='sendWolRequest(' + '\'' + computer.mac + '\'' + ')') Send WoL
