@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "run": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon --ignore computers.json index.js"
   },
   "author": "",
   "license": "ISC",

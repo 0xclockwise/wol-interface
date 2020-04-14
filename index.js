@@ -17,24 +17,26 @@ function readEntries() {
   return JSON.parse(data);
 }
 
-app.all('/', function (req, res) {
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+app.post('/', (req, res) => {
+    console.log(`Sending WoL signal to ${req.body.mac}`);
+    wol.wake(req.body.mac);
+    res.json({ status: 'success' });
+  })
+
+app.get('/', function (req, res) {
   let computers = readEntries();
   res.render('index', { computers });
   console.log('Request incoming');
-})
-
-app.post('/', (req, res) => {
-  console.log(`Sending WoL signal to ${req.body.mac}`);
-  wol.wake(req.body.mac);
-  res.json({ status: 'success' });
 })
 
 app.use('/static', express.static('static'));
 app.set("view engine", "pug");
 app.set("views", path.join(__dirname, "views"));
 app.use(cors());
-app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+
 
 app.get('/add', (req, res) => {
   res.render('add');
