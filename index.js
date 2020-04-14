@@ -46,5 +46,5 @@ app.post('/add', (req, res) => {
   console.log(req.body);
   let buffer = JSON.stringify(readEntries().concat(req.body), null, 4);
   fs.writeFileSync('computers.json', buffer);
-  res.redirect('/add');
+  res.redirect('/');
 })

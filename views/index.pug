@@ -13,4 +13,12 @@ html
                         td= computer.name
                         td= computer.mac
                         td: button(onclick='sendWolRequest(' + '\'' + computer.mac + '\'' + ')') Send WoL
-        a(href="/add") Add a new computer to the list
+        hr
+        h1 Add a new computer
+
+        form(action="/add", method="post")
+            label(for="name") Name
+            input(type="text", name="name")
+            label(for="mac") MAC Address
+            input(type="text", name="mac")
+            input(type="submit", value="Submit")
