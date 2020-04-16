@@ -43,7 +43,7 @@ app.post('/add', (req, res) => {
 
   let buffer = JSON.stringify(readEntries().concat(req.body), null, 4);
   fs.writeFileSync('computers.json', buffer);
-  res.redirect('/')
+  res.redirect('/admin')
 })
 
 app.post('/remove', (req, res) => {
