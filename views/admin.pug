@@ -2,7 +2,7 @@ html
     head
         script(src='static/index.js') 
     body
-        h1 WoL interface
+        h1 WoL admin interface
 
         if computers == []
             h1 There are no computers added in the database
@@ -23,3 +23,6 @@ html
             label(for="mac") MAC Address
             input(type="text", name="mac")
             input(type="submit", value="Submit")
+
+        hr
+        a(href="https://github.com/0xclockwise/wol-interface") GitHub Repository

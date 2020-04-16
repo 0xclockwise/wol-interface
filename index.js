@@ -23,8 +23,13 @@ app.post('/', (req, res) => {
 
 app.get('/', function (req, res) {
   let computers = readEntries();
-  res.render('index', { computers });
+  res.render('noadmin', { computers });
   console.log('Request incoming');
+})
+
+app.get('/admin', (req, res) => {
+  let computers = readEntries();
+  res.render('admin', { computers });
 })
 
 app.use('/static', express.static('static'));
