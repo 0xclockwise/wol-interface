@@ -24,12 +24,13 @@ app.post('/', (req, res) => {
 app.get('/', function (req, res) {
   let computers = readEntries();
   res.render('noadmin', { computers });
-  console.log('Request incoming');
+  console.log('Request incoming to noadmin site');
 })
 
 app.get('/admin', (req, res) => {
   let computers = readEntries();
   res.render('admin', { computers });
+  console.log('Request incoming to admin site');
 })
 
 app.use('/static', express.static('static'));
@@ -39,7 +40,8 @@ app.use(cors());
 
 
 app.post('/add', (req, res) => {
-  // Make sure that no duplicates are added
+  console.log('Adding ', req.body);
+  
 
   let buffer = JSON.stringify(readEntries().concat(req.body), null, 4);
   fs.writeFileSync('computers.json', buffer);
@@ -47,13 +49,11 @@ app.post('/add', (req, res) => {
 })
 
 app.post('/remove', (req, res) => {
-  console.log(req.body)
+  console.log('Removing', req.body)
   
   let computers = readEntries();
-  console.log('Computers:', computers);
   
   let newEntries = computers.filter(computer => computer.name != req.body.name)
-  console.log('New entries', newEntries)
   fs.writeFileSync('computers.json', JSON.stringify(newEntries))
   res.redirect('/')
 })

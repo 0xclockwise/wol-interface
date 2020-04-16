@@ -1,5 +1,5 @@
-const WAKE_URL = 'http://localhost:1234/'
-const REMOVE_URL = 'http://localhost:1234/remove'
+const WAKE_URL = '/'
+const REMOVE_URL = '/remove'
 
 function sendWolRequest(mac) {
   fetch(WAKE_URL, {
