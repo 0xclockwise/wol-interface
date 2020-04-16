@@ -4,16 +4,11 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const fs = require('fs');
-const port = 1234;
 
 const app = express();
-app.listen(port, () => {
-  console.log(`Running on http://localhost:${port}`);
-})
 
 function readEntries() {
   let data = fs.readFileSync('computers.json');
-  console.log('JSON.parse(data) :', JSON.parse(data));
   return JSON.parse(data);
 }
 
@@ -38,13 +33,27 @@ app.set("views", path.join(__dirname, "views"));
 app.use(cors());
 
 
-app.get('/add', (req, res) => {
-  res.render('add');
-})
-
 app.post('/add', (req, res) => {
-  console.log(req.body);
+  // Make sure that no duplicates are added
+
   let buffer = JSON.stringify(readEntries().concat(req.body), null, 4);
   fs.writeFileSync('computers.json', buffer);
-  res.redirect('/');
+  res.redirect('/')
+})
+
+app.post('/remove', (req, res) => {
+  console.log(req.body)
+  
+  let computers = readEntries();
+  console.log('Computers:', computers);
+  
+  let newEntries = computers.filter(computer => computer.name != req.body.name)
+  console.log('New entries', newEntries)
+  fs.writeFileSync('computers.json', JSON.stringify(newEntries))
+  res.redirect('/')
+})
+
+const port = 1234;
+app.listen(port, () => {
+  console.log(`Running on http://localhost:${port}`);
 })

@@ -13,6 +13,7 @@ html
                         td= computer.name
                         td= computer.mac
                         td: button(onclick='sendWolRequest(' + '\'' + computer.mac + '\'' + ')') Send WoL
+                        td: button(onclick='remove(' + '\'' + computer.name + '\', ' + '\'' + computer.mac +'\')') Remove
         hr
         h1 Add a new computer
 
