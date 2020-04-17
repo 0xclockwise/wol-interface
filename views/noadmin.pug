@@ -11,4 +11,6 @@ html
                 for computer in computers
                     tr
                         td= computer.name
-                        td: button(onclick='sendWolRequest(' + '\'' + computer.mac + '\'' + ')') Send WoL
+                        td(id=computer.ip) Unknown status
+                        if computer.mac != ''
+                            td: button(onclick='sendWolRequest(' + '\'' + computer.mac + '\'' + ')') Send WoL

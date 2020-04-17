@@ -12,7 +12,10 @@ html
                     tr
                         td= computer.name
                         td= computer.mac
-                        td: button(onclick='sendWolRequest(' + '\'' + computer.mac + '\'' + ')') Send WoL
+                        td= computer.ip
+                        td(id=computer.ip) Unknown status
+                        if computer.mac != ''
+                            td: button(onclick='sendWolRequest(' + '\'' + computer.mac + '\'' + ')') Send WoL
                         td: button(onclick='remove(' + '\'' + computer.name + '\', ' + '\'' + computer.mac +'\')') Remove
         hr
         h1 Add a new computer
@@ -22,6 +25,8 @@ html
             input(type="text", name="name")
             label(for="mac") MAC Address
             input(type="text", name="mac")
+            label(for="ip") IP Address or hostname
+            input(type="text", name="ip")
             input(type="submit", value="Submit")
 
         hr
