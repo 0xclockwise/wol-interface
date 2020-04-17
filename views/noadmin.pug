@@ -11,5 +11,4 @@ html
                 for computer in computers
                     tr
                         td= computer.name
-                        td= computer.mac
                         td: button(onclick='sendWolRequest(' + '\'' + computer.mac + '\'' + ')') Send WoL
