@@ -2,3 +2,4 @@ node_modules
 computers.csv
 .vscode
 computers.json
+package-lock.json
