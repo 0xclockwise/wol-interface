@@ -13,10 +13,11 @@ html
                         td= computer.name
                         td= computer.mac
                         td= computer.ip
-                        td(id=computer.ip) Unknown status
+                        td(id=computer.ip class='status') Unknown status
                         if computer.mac != ''
                             td: button(onclick='sendWolRequest(' + '\'' + computer.mac + '\'' + ')') Send WoL
                         td: button(onclick='remove(' + '\'' + computer.name + '\', ' + '\'' + computer.mac +'\')') Remove
+        button(id='reping' onclick='ping()') Refresh status
         hr
         h1 Add a new computer
 

@@ -11,6 +11,7 @@ html
                 for computer in computers
                     tr
                         td= computer.name
-                        td(id=computer.ip) Unknown status
+                        td(id=computer.ip class='status') Unknown status
                         if computer.mac != ''
                             td: button(onclick='sendWolRequest(' + '\'' + computer.mac + '\'' + ')') Send WoL
+        button(id='reping' onclick='ping()') Refresh status
